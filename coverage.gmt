@@ -1,0 +1,16 @@
+#!/bin/bash
+: '
+The script plots the ray path coverage for stations to be used in Ambient Noise Tomography
+in the Kahmir region.
+'
+cd /DATA/Lg_Sn_Tomo/IK_Vfiles/NW_Himalaya/rec_section/36.879-71.099
+grd_file=/home/SHARE/resources/GMT/GRD/N30_36E72_76.grd
+cpt_file=/home/SHARE/resources/GMT/CPT/india_colour.cpt
+gmt grdimage $grd_file -C$cpt_file -R73.8/76.5/32/34.5 -JM15 -P -K -B0.4/0.4 > /DATA/Lg_Sn_Tomo/IK_Vfiles/NW_Himalaya/rec_section/36.879-71.099/coverage_map.ps
+#long_lat.xy contains all the unique selection of station pairs
+#gmt psxy long_lat.xy -R -JM -W1,black -P -O -A -K >> coverage_map.ps
+#long_lat.txt contains the coordinates of all the stations
+gmt psxy stations_cord.txt -R -JM -St0.4 -W255/0/0 -G255/0/0 -O >> /DATA/Lg_Sn_Tomo/IK_Vfiles/NW_Himalaya/rec_section/36.879-71.099/coverage_map.ps
+#The following command will append the stations name in the map
+#gmt pstext long_lat_stn.txt -R -JM -F+f10p,Helvetica-Bold,white+a1+jLB -O >> coverage_map.ps
+

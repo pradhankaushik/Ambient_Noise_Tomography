@@ -1,0 +1,7 @@
+r corr-1.sac
+DO i FROM 2 TO 651 BY 1
+message "adding file $i$"
+addf corr-$i$.sac
+ENDDO
+write STACKED.SAC
+
